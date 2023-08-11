@@ -1,9 +1,27 @@
+<!DOCTYPE html>
 <html>
 <head>
-<title>Patatap Clone</title>
-<script type="text/javascript" src="paper-full.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/howler/1.1.28/howler.js"></script>
-<link rel="stylesheet" href="circles.css" type="text/css">
+    <title>Patatap Clone - Appearance Modified</title>
+    <script type="text/javascript" src="paper-full.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/howler/1.1.28/howler.js"></script>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        canvas {
+            border: 4px solid #333;
+        }
+        h1 {
+            text-align: center;
+            font-size: 24px;
+            color: #333;
+        }
+    </style>
 <script type="text/paperscript" canvas="mycanvas">
 
     var keyData = {
@@ -169,31 +187,28 @@
 
 var circles = [];
 
-    function onKeyDown(event) {
-        if(keyData[event.key]){
-            var maxpoint = new Point(view.size.width,view.size.height);
-            var randomPoint = Point.random();
-            var point = maxpoint * randomPoint;
-            var newCircle = new Path.Circle(point, 500);
-            newCircle.fillColor = keyData[event.key].color;
-            keyData[event.key].sound.play();
-           circles.push(newCircle);
+        function onKeyDown(event) {
+            if (keyData[event.key]) {
+                var maxpoint = new Point(view.size.width, view.size.height);
+                var randomPoint = Point.random();
+                var point = maxpoint * randomPoint;
+                var newCircle = new Path.Circle(point, 500);
+                newCircle.fillColor = keyData[event.key].color;
+                keyData[event.key].sound.play();
+                circles.push(newCircle);
+            }
         }
-    }
-     function onFrame(event)
-     {
-         for(var i =0 ; i < circles.length ; i++){
-             circles[i].fillColor.hue +=1;
-             circles[i].scale(.9);
-         }
-      // animatecircle.fillColor.hue += 1;
-     }
-</script>
+
+        function onFrame(event) {
+            for (var i = 0; i < circles.length; i++) {
+                circles[i].fillColor.hue += 1;
+                circles[i].scale(0.9);
+            }
+        }
+    </script>
 </head>
 <body>
-    <canvas id="mycanvas" resize>
-
-        <h1>Press any alphabet on keyboard.</h1>
-    </canvas>
+    <canvas id="mycanvas" resize></canvas>
+    <h1>Press any letter on the keyboard</h1>
 </body>
 </html>
