@@ -5,6 +5,10 @@ canvas {
     height: 100vh;
     background: black;
 }
+#titled{
+color:white;
+background-color: red;
+}
 
 body,html{
     margin:0;
